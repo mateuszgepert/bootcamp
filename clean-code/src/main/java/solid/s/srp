@@ -1,0 +1,7 @@
+if all four
+ - open close principle
+ - liskov substitution principle
+ - interface segregation principle
+ - dependency inversion principle
+
+are met single responsibility principle is not violated as well ;)
