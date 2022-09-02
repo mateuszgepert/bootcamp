@@ -24,14 +24,15 @@ public class Game {
 
     List<QuestionDTO> questions;
     QuestionDTO currentQuestion;
-    int count = 5;
+    int questionsNumber = 5;
+    int count = questionsNumber;
     Integer options;
     char quizType;
 
     @ShellMethod("Starts game")
     public String start(@ShellOption(defaultValue = "") String option, @ShellOption(defaultValue = "") String answerOptions) throws JsonProcessingException {
-        if(count != 5) {
-            count = 5;
+        if(count != questionsNumber) {
+            count = questionsNumber;
         }
         //add support for single letter menu option #jira QUIZ-334
         if (option.isBlank() ||
@@ -107,7 +108,6 @@ public class Game {
     @ShellMethod("Answer a")
     public String A() {
         currentQuestion.answer = currentQuestion.answers.get(0);
-        currentQuestion = questions.get(--count);
         //end game
         if (count <= 0) {
             return "FINISHED!!!" +
@@ -116,6 +116,7 @@ public class Game {
                     lineSeparator() +
                     "to play again type [start]";
         } else {
+            currentQuestion = questions.get(--count);
             final char[] a = {'a'};
             return String.format("Q: %s\n%s", currentQuestion.question, currentQuestion.answers.stream().map(answer -> {
                 if (a[0] == 'a') {
@@ -133,14 +134,13 @@ public class Game {
                 .stream()
                 .filter(question -> question.correctAnswer.equals(question.answer))
                 .count();
-        return String.format("Score [%d/20]\n" +
-                "%s", score, questions.stream().map(question -> String.format("Question: %s\nAnswer: %s\n Your answer: %s", question.question, question.correctAnswer, question.answer)).collect(Collectors.joining("\n")));
+        return String.format("Score [%d/%d]\n" +
+                "%s", score, questionsNumber, questions.stream().map(question -> String.format("Question: %s\nAnswer: %s\n Your answer: %s", question.question, question.correctAnswer, question.answer)).collect(Collectors.joining("\n")));
     }
 
     @ShellMethod("Answer b")
     public String B() {
         currentQuestion.answer = currentQuestion.answers.get(1);
-        currentQuestion = questions.get(--count);
         //end game
         if (count <= 0) {
             return "FINISHED!!!" +
@@ -149,6 +149,7 @@ public class Game {
                     lineSeparator() +
                     "to play again type [start]";
         } else {
+            currentQuestion = questions.get(--count);
             final char[] a = {'a'};
             return String.format("Q: %s\n%s", currentQuestion.question, currentQuestion.answers.stream().map(answer -> {
                 if (a[0] == 'a') {
@@ -185,7 +186,6 @@ public class Game {
             return "available only a and b and c";
         }
         currentQuestion.answer = currentQuestion.answers.get(3);
-        currentQuestion = questions.get(--count);
         if (count <= 0) {
             return "FINISHED!!!" +
                     lineSeparator() +
@@ -193,6 +193,7 @@ public class Game {
                     lineSeparator() +
                     "to play again type [start]";
         } else {
+            currentQuestion = questions.get(--count);
             final char[] a = {'a'};
             return String.format("Q: %s\n%s", currentQuestion.question, currentQuestion.answers.stream().map(answer -> {
                 if (a[0] == 'a') {
@@ -211,7 +212,6 @@ public class Game {
             return "available only a and b and c and d";
         }
         currentQuestion.answer = currentQuestion.answers.get(4);
-        currentQuestion = questions.get(--count);
         if (count <= 0) {
             return "FINISHED!!!" +
                     lineSeparator() +
@@ -219,6 +219,7 @@ public class Game {
                     lineSeparator() +
                     "to play again type [start]";
         } else {
+            currentQuestion = questions.get(--count);
             final char[] a = {'a'};
             return String.format("Q: %s\n%s", currentQuestion.question, currentQuestion.answers.stream().map(answer -> {
                 if (a[0] == 'a') {
