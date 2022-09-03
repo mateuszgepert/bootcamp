@@ -197,7 +197,7 @@ public class ExchangeRatesProvider {
     }
 
     public static void main(String[] args) throws IOException {
-        code_smell.ExchangeRatesProvider exchangeRatesProvider = new code_smell.ExchangeRatesProvider();
+        ExchangeRatesProvider exchangeRatesProvider = new ExchangeRatesProvider();
         System.out.println(exchangeRatesProvider.printMoney("EUR", 23453452));
     }
 }
