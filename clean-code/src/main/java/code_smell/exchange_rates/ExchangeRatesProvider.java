@@ -1,4 +1,4 @@
-package code_smell;
+package code_smell.exchange_rates;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
