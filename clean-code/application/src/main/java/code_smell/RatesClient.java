@@ -30,6 +30,7 @@ class RatesClient {
             }
             return Optional.of(buf.toString("UTF-8"));
         } catch (IOException e) {
+            System.out.println("ERROR " + e.getMessage());
             return Optional.empty();
         }
     }
