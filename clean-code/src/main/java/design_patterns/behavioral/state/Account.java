@@ -1,12 +1,11 @@
 package design_patterns.behavioral.state;
 
 import lombok.AllArgsConstructor;
-
-import java.util.List;
-import java.util.Optional;
+import lombok.extern.slf4j.Slf4j;
 
 @AllArgsConstructor
-class Account {
+@Slf4j
+public class Account {
 
     private final String id;
     private AccountState state;
@@ -15,38 +14,39 @@ class Account {
         return new Account(id, AccountState.INITIALIZED);
     }
 
-    Optional<AccountState> updateState(String stateToUpdate) {
-        var desiredState = AccountState.valueOf(stateToUpdate);
+    String getState() {
+        return state.name();
+    }
+
+    void block() {
         if (state == AccountState.ACTIVE) {
-            if (desiredState == AccountState.INITIALIZED) {
-                return Optional.empty();
-            } else {
-                return Optional.of(desiredState);
-            }
-        } else if (state == AccountState.INITIALIZED) {
-            if (desiredState != AccountState.ACTIVE) {
-                return Optional.empty();
-            } else {
-                return Optional.of(AccountState.ACTIVE);
-            }
-        } else if (state == AccountState.BLOCKED) {
-            if (desiredState == AccountState.ACTIVE) {
-                return Optional.of(AccountState.DISABLED);
-            }
-            if (desiredState == AccountState.DISABLED) {
-                return Optional.of(AccountState.REMOVED);
-            }
-            return Optional.empty();
-        } else if (state == AccountState.DISABLED) {
-            if (List.of(AccountState.REMOVED, AccountState.ACTIVE).contains(desiredState)) {
-                return Optional.of(desiredState);
-            } else {
-                return Optional.empty();
-            }
-        } else {
-            //status is removed
-            return Optional.empty();
+            state = AccountState.BLOCKED;
         }
+    }
+
+    void unblock() {
+        if (state == AccountState.BLOCKED) {
+            state = AccountState.ACTIVE;
+        }
+    }
+
+    void activate() {
+        if (state == AccountState.ACTIVE) {
+            //do nothing
+            return;
+        }
+        if (state == AccountState.INITIALIZED) {
+            this.state = AccountState.ACTIVE;
+        }
+
+    }
+
+    void disable() {
+        if(state == AccountState.BLOCKED) {
+            System.out.println("Someone tries to disable blocked account");
+            return;
+        }
+        state = AccountState.DISABLED;
     }
 
 }

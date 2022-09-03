@@ -1,10 +1,9 @@
 package design_patterns.behavioral.state;
 
-enum AccountState {
+public enum AccountState {
 
     INITIALIZED,
     ACTIVE,
     DISABLED,
-    BLOCKED,
-    REMOVED
+    BLOCKED
 }

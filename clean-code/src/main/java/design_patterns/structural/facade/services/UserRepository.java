@@ -1,10 +1,10 @@
-package design_patterns.structural.facade;
+package design_patterns.structural.facade.services;
 
 import java.util.List;
 
-class UserRepository {
+public class UserRepository {
 
-    List<User> getUsers() {
+    public List<User> getUsers() {
         return List.of();
     }
 

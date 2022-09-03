@@ -1,15 +1,13 @@
-package design_patterns.structural.proxy;
+package design_patterns.structural.proxy.user.proxy.types;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 
-class SlowUserTypeRepoAPi implements UserTypeRepository {
+class SlowUserTypeRepoAPI {
 
     private final Map<String, String> DATABASE = new HashMap<>();
 
-    @Override
-    public Optional<String> getUserType(String id) {
+    public String getUserType(String id) {
 
         //perform some heavy logic operations to get the required user type
 
@@ -18,6 +16,6 @@ class SlowUserTypeRepoAPi implements UserTypeRepository {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        return Optional.of(DATABASE.get(id));
+        return DATABASE.getOrDefault(id, "type");
     }
 }

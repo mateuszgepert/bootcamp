@@ -1,5 +1,9 @@
 package design_patterns.structural.facade;
 
+import design_patterns.structural.facade.services.InvoicingService;
+import design_patterns.structural.facade.services.PaymentsService;
+import design_patterns.structural.facade.services.UserRepository;
+
 class PdfReportGenerator {
 
     private InvoicingService invoicingService;

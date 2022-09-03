@@ -1,4 +1,4 @@
-package design_patterns.structural.facade;
+package design_patterns.structural.facade.services;
 
 import lombok.extern.java.Log;
 
