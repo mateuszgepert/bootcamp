@@ -6,7 +6,6 @@ class Application {
 
     public static void main(String[] args) throws IOException {
         ExchangeRatesProvider exchangeRatesProvider = new ExchangeRatesProvider(new RatesClient(), new RateExtractor());
-        System.out.println(exchangeRatesProvider.printMoney("XXX"));
-
+        System.out.println(exchangeRatesProvider.printMoney("EUR", 222));
     }
 }
