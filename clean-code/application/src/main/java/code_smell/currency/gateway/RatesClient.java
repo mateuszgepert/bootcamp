@@ -1,4 +1,4 @@
-package code_smell;
+package code_smell.currency.gateway;
 
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;

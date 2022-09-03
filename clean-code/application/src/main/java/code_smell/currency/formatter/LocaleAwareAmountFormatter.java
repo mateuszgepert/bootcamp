@@ -1,11 +1,12 @@
-package code_smell;
+package code_smell.currency.formatter;
 
 import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.List;
 import java.util.Locale;
 
-class LocaleAwareAmountFormatter {
+public class LocaleAwareAmountFormatter {
+
     public String format(BigDecimal amount, String currency) {
         var localeWithCurrency = getLocaleAndSymbolFor(currency);
         var formatting = NumberFormat.getInstance(localeWithCurrency.locale);
