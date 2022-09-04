@@ -1,4 +1,4 @@
-package com.example.quiz;
+package com.example.quiz.questions.countries;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -7,10 +7,14 @@ import java.util.List;
 import static java.util.Objects.nonNull;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public record CountryDTO(CountryName name, List<String> capital) {
+record CountryDTO(CountryName name, List<String> capital) {
 
     public String getMainCapital() {
         return nonNull(capital) ? capital.get(0) : "";
+    }
+
+    public String countryName() {
+        return name.common();
     }
 
 }
