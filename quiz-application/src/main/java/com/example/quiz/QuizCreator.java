@@ -5,9 +5,11 @@ import com.example.quiz.questions.QuestionType;
 import com.example.quiz.questions.QuestionsCreator;
 import com.example.quiz.questions.countries.CountriesQuestionsFactory;
 import com.example.quiz.questions.trivia.TriviaQuestionFactory;
+import org.springframework.stereotype.Component;
 
 import java.util.stream.Collectors;
 
+@Component
 public class QuizCreator {
 
     public Game createGameFor(QuestionType questionType, int numberOfQuestions, int numberOfAnswers) {
