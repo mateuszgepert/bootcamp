@@ -22,7 +22,4 @@ public class GameRepository {
         return Optional.of(games.get(gameId));
     }
 
-    public void save(UUID id, Game game) {
-        games.put(id, game);
-    }
 }
