@@ -3,10 +3,22 @@ Zadanie:
 
 1. `git checkout quiz-trivia` przejrzyj istniejący kod i zastanów się co byś poprawił i gdzie potencjalnie są jakieś błędy (ukryte są co najmniej 2)
 2. przejdź do https://github.com/mateuszgepert/bootcamp/pull/1 i zrób review kodu które dodaje obsługę quizu z krajami do instniejącej już aplikacji (zwróć uwagę jak przygotować się na kolejne zmiany w przyszłości)
-3. `git checkout quiz-countries` popraw istniejący kod z założeniem że w przyszłości będzie trzeba wdrożyć kolejny typ quizu (zadanie 4). Zastanów się jaki wzorzec projektowy można by zastosować i jak logicznie podzielić całą aplikację (hint. spring shell potraktuj jako API które można w przyszłości łatwo wymienić na np. warstwę HTTP)
-4. dodaj obługę quizu bohaterów z Gwiezdnych Wojen
- - użyj API https://swapi.dev/api/people
+3. `git checkout quiz-countries` popraw istniejący kod z założeniem że w przyszłości będzie trzeba wdrożyć kolejny typ quizu (zadanie 5). Zastanów się jaki wzorzec projektowy można by zastosować i jak logicznie podzielić całą aplikację (hint. spring shell potraktuj jako API które można w przyszłości łatwo wymienić na np. warstwę HTTP)
+4. przerób całą aplikację żeby guiz mógłbyć obsługiwany z poziomu HTTP - (wystaw RESTowe endpointy, jako bazę danych możesz uzyć javowej mapy)
+5. dodaj obługę quizu bohaterów z Gwiezdnych Wojen
+ - użyj API https://swapi.dev/api/people (zwróć uwagę na pagowanie - kto powienien przejąć odpowiedzialność?)
  - forma pytania:
-  Questions: W ilu filmach zagrał Luke Skywalker?
+  Questions: W ilu filmach zagrał Luke Skywalker? (zastanów się jak obsłużyć pytania o bohaterów różnych płci)
   Answer: wpisana przez użytkownika (zwróć uwagę że może być max 6 - czy potrzeba walidacji?)
-5. przerób całą aplikację żeby guiz mógłbyć obsługiwany z poziomu HTTP - (wystaw RESTowe endpointy, jako bazę danych możesz uzyć javowej mapy)  
+6. dodaj możliwość edytowania dowlnej odpowiedzi przed zakończeniem quizu (aktualnie ostatnie pytanie kończy quiz!)
+7. dodaj funkcjonalność tworzenia własnych quizów
+8. dodaj funkcjonalność użytkowników
+ - admin - tworzenie quizów
+ - gracz - zagranie w wybrany quiz
+ Nie musisz tworzyć warstwy autoryzacji i uwierzytelniania (uwzględnij id użytkownika w np. headerze).
+ Zabezpiecz możliwość edycji odpowiedzi na nie swoje quizy
+9. dodaj możliwość wyświetlania statystyk administratorowi
+ - ile graczy zagrało w dany quiz w przedziale czasu
+ - ilość poprawnych/błędnych odpowiedzi (z rozbiciem na pytania)
+10. dodaj możliwość tworzenia quizów przez graczy:
+ - quiz może być publiczny (wymagane zatwierdzenie przez administratora) bądź prywatny
